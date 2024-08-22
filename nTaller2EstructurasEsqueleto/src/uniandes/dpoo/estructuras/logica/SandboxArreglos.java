@@ -197,7 +197,12 @@ public class SandboxArreglos
      */
     public void reiniciarArregloEnteros( double[] valores )
     {
-
+    int longitud= valores.length;
+    int[] NuevoArregloEnteros = new int[longitud];
+    for(int i=0;i<longitud;i++) {
+    NuevoArregloEnteros[i]= (int) valores[i];
+    }
+    valores=NuevoArregloEnteros;
     }
 
     /**
@@ -208,7 +213,12 @@ public class SandboxArreglos
      */
     public void reiniciarArregloCadenas( Object[] objetos )
     {
-
+    int longitud= objetos.length;
+    String[] NuevoArregloCadenas = new String[longitud];
+    for(int i=0;i<longitud;i++) {
+       NuevoArregloCadenas[i]=  objetos[i].toString();
+    }
+    arregloCadenas=NuevoArregloCadenas;
     }
 
     /**
@@ -218,8 +228,18 @@ public class SandboxArreglos
      */
     public void volverPositivos( )
     {
-
+    int longitud= arregloEnteros.length;
+    int[] NuevoArregloEnteros = new int[longitud];
+    for(int i=0;i<longitud;i++) {
+    	if(arregloEnteros[i]<0) {
+    		NuevoArregloEnteros[i]= -arregloEnteros[i];
+    	}
+    	else {
+    			NuevoArregloEnteros[i]= arregloEnteros[i];
+    		}
+    	}
     }
+    
 
     /**
      * Modifica el arreglo de enteros para que todos los valores queden organizados de menor a mayor.
