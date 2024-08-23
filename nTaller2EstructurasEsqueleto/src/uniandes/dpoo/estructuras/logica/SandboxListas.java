@@ -114,7 +114,7 @@ public class SandboxListas
      */
     public void eliminarEntero( int valor )
     {
-   
+    	listaEnteros.removeAll(List.of(valor));
     }
 
     /**
@@ -123,7 +123,7 @@ public class SandboxListas
      */
     public void eliminarCadena( String cadena )
     {
-
+    	listaCadenas.removeAll(List.of(cadena));
     }
 
     /**
@@ -135,7 +135,13 @@ public class SandboxListas
      */
     public void insertarEntero( int entero, int posicion )
     {
-
+    int longitud= listaEnteros.size();
+    	 if (posicion < 0) {
+    	        posicion = 0;
+    	    } else if (posicion > longitud) {
+    	        posicion = longitud;
+    	    }
+    	 listaEnteros.add(posicion, entero);
     }
 
     /**
@@ -144,8 +150,14 @@ public class SandboxListas
      *        no debe hacer nada.
      */
     public void eliminarEnteroPorPosicion( int posicion )
-    {
-
+    {	
+    int longitud= listaEnteros.size();
+   	 if (posicion < 0 || posicion > longitud ) {
+	       
+	    } else  {
+	    	listaEnteros.remove(posicion);
+	    }
+	  
     }
 
     /**
@@ -156,6 +168,15 @@ public class SandboxListas
      */
     public void reiniciarArregloEnteros( double[] valores )
     {
+    	int longitud=listaEnteros.size();
+        int elemento=0;
+        List<Integer> NuevaListaEnteros = new ArrayList<>();
+        for (int i =0;i<longitud;i++) {
+        	elemento= (listaEnteros.get(i)/1);
+        	NuevaListaEnteros.add(elemento);
+        	
+        }
+        listaEnteros=NuevaListaEnteros;
     }
 
     /**
@@ -166,7 +187,15 @@ public class SandboxListas
      */
     public void reiniciarArregloCadenas( List<Object> objetos )
     {
-
+    int longitud=listaCadenas.size();
+    String elemento=null;
+    List<String> NuevaListaCadenas = new ArrayList<>();
+    for (int i =0;i<longitud;i++) {
+    	elemento= listaCadenas.get(i).toString();
+    	NuevaListaCadenas.add(elemento);
+    	
+    }
+    listaCadenas=NuevaListaCadenas;
     }
 
     /**
@@ -176,6 +205,15 @@ public class SandboxListas
      */
     public void volverPositivos( )
     {
+    	int longitud=listaEnteros.size();
+        int elemento=0;
+        List<Integer> NuevaListaEnteros = new ArrayList<>();
+        for (int i =0;i<longitud;i++) {
+        	elemento= Math.abs(listaEnteros.get(i));
+        	NuevaListaEnteros.add(elemento);
+        	
+        }
+        listaEnteros=NuevaListaEnteros;
     }
 
     /**
@@ -183,7 +221,7 @@ public class SandboxListas
      */
     public void organizarEnteros( )
     {
-
+    listaEnteros.sort((a, b) -> b.compareTo(a));;
     }
 
     /**
@@ -191,7 +229,7 @@ public class SandboxListas
      */
     public void organizarCadenas( )
     {
-
+    listaCadenas.sort((a, b) -> a.compareTo(b));
     }
 
     /**
@@ -201,7 +239,15 @@ public class SandboxListas
      */
     public int contarApariciones( int valor )
     {
-        return -1;
+     int longitud= listaEnteros.size();
+     int veceselemento=0;
+     for (int i =0;i<longitud;i++) {
+    	 if (listaEnteros.get(i)==valor) {
+    		 veceselemento++;
+    	 }
+     }
+     
+        return veceselemento;
     }
 
     /**
@@ -213,7 +259,15 @@ public class SandboxListas
      */
     public int contarApariciones( String cadena )
     {
-        return -1;
+    	int longitud= listaCadenas.size();
+        int veceselemento=0;
+        for (int i =0;i<longitud;i++) {
+       	 if (listaCadenas.get(i)==cadena) {
+       		 veceselemento++;
+       	 }
+        }
+        
+           return veceselemento;
     }
 
     /**

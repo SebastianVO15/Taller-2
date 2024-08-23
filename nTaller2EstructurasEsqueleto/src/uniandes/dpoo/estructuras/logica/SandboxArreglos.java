@@ -415,19 +415,13 @@ public class SandboxArreglos
     	return false;
     }
     else {
-    int verificador=0;
     for(int i=0;i <longitud1;i++) {
-    	if(arregloEnteros[i]==otroArreglo[i]) {
-    		verificador++;
-    		
+    	if(arregloEnteros[i]!=otroArreglo[i]) {
+    		return false;
     	}
     }
-    if(verificador==longitud1) {
-    	return true;
-    
-    	}
     }
-    return false;
+    return true;
     }
     /**
      * Compara el arreglo de enteros con otro arreglo de enteros y verifica que tengan los mismos elementos, aunque podría ser en otro orden.
