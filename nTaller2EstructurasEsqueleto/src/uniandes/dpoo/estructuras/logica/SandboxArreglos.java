@@ -409,20 +409,24 @@ public class SandboxArreglos
      */
     public boolean compararArregloEnteros( int[] otroArreglo )
     {
-    int longitud1= arregloEnteros.length;
-    int longitud2= otroArreglo.length;
-    if(longitud1 != longitud2) {
-    	return false;
-    }
-    else {
-    for(int i=0;i <longitud1;i++) {
-    	if(arregloEnteros[i]!=otroArreglo[i]) {
+    	int longitud=arregloEnteros.length;
+        int longitud2=otroArreglo.length;
+        	if (longitud == longitud2) {
+        		for(int i=0;i<longitud;i++) {
+        			if (arregloEnteros[i] != otroArreglo[i]) {
+        				return false;
+        			}
+        			else {
+        				return true;
+        			}
+        		}
+        		
+        	}
+        	else {
+        		return false;
+        	}
     		return false;
-    	}
-    }
-    }
-    return true;
-    }
+        }
     /**
      * Compara el arreglo de enteros con otro arreglo de enteros y verifica que tengan los mismos elementos, aunque podría ser en otro orden.
      * @param otroArreglo El arreglo de enteros con el que se debe comparar
