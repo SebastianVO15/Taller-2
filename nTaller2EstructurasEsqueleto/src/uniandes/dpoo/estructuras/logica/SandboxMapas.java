@@ -102,7 +102,12 @@ public class SandboxMapas
      */
     public Collection<String> getLlaves( )
     {
-        return null;
+    	List<String> llaves = new ArrayList<>(mapaCadenas.keySet());
+    	List <String> Nuevasllaves = new ArrayList<String>();
+    	for(String llave:llaves) {
+    		Nuevasllaves.add(llave.toUpperCase());
+    	}
+        return Nuevasllaves;
     }
 
     /**
@@ -111,7 +116,23 @@ public class SandboxMapas
      */
     public int getCantidadCadenasDiferentes( )
     {
-        return -1;
+    	int Valoresdif=0;
+    	List<String> elementos = new ArrayList<>(mapaCadenas.values());
+    	List<String> vistos = new ArrayList<>();
+    	List <String> repetido = new ArrayList<String>();
+    	for (String elemento:elementos) {
+    		if (vistos.contains(elemento)) {
+                if (!repetido.contains(elemento)) {
+                    Valoresdif++;
+                    repetido.add(elemento);
+                }
+    		else {
+    			vistos.add(elemento);
+    		}
+    		
+    	}
+    	}
+        return Valoresdif;
     }
 
     /**
@@ -132,7 +153,7 @@ public class SandboxMapas
      */
     public void eliminarCadenaConLLave( String llave )
     {
-
+    mapaCadenas.remove(llave);
     }
 
     /**
@@ -141,7 +162,14 @@ public class SandboxMapas
      */
     public void eliminarCadenaConValor( String valor )
     {
-
+    String Llave="";
+    List<String> llaves = new ArrayList<>(mapaCadenas.keySet());
+    for(String llave : llaves) {
+    	if (mapaCadenas.get(llave).equals(valor)) {
+    		Llave=llave;
+    	}
+    }
+    mapaCadenas.remove(Llave);
     }
 
     /**
