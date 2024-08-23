@@ -1,10 +1,11 @@
 package uniandes.dpoo.estructuras.logica;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import java.util.Collections;
 /**
  * Esta clase tiene un conjunto de métodos para practicar operaciones sobre mapas.
  *
@@ -41,7 +42,9 @@ public class SandboxMapas
      */
     public List<String> getValoresComoLista( )
     {
-        return null;
+    	List<String> Valores = new ArrayList<String>(mapaCadenas.values());
+        Collections.sort(Valores);
+    	return Valores;
     }
 
     /**
@@ -50,7 +53,9 @@ public class SandboxMapas
      */
     public List<String> getLlavesComoListaInvertida( )
     {
-        return null;
+    	List<String> Llaves = new ArrayList<String>(mapaCadenas.keySet());
+    	Llaves.sort(Collections.reverseOrder());
+        return Llaves;
     }
 
     /**
@@ -61,7 +66,14 @@ public class SandboxMapas
      */
     public String getPrimera( )
     {
-        return null;
+    	if (mapaCadenas.isEmpty()) {
+            return null;
+        }
+    	else {
+    		List <String> llaves = (List<String>) mapaCadenas.keySet();
+    		String menor=Collections.min(llaves);
+    		return menor;
+    	}
     }
 
     /**
@@ -72,7 +84,14 @@ public class SandboxMapas
      */
     public String getUltima( )
     {
-        return null;
+    	if (mapaCadenas.isEmpty()) {
+            return null;
+        }
+    	else {
+    		List <String> llaves = (List<String>) mapaCadenas.keySet();
+    		String mayor=Collections.max(llaves);
+    		return mayor;
+    	}
     }
 
     /**

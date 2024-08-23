@@ -2,7 +2,7 @@ package uniandes.dpoo.estructuras.logica;
 
 import java.util.Arrays;
 import java.util.HashMap;
-
+import java.util.Map;
 /**
  * Esta clase tiene un conjunto de métodos para practicar operaciones sobre arreglos de enteros y de cadenas.
  *
@@ -196,10 +196,12 @@ public class SandboxArreglos
     public void eliminarEnteroPorPosicion( int posicion )
     {
     int longitud= arregloEnteros.length;
-    int[] NuevoArregloEnteros = new int[longitud-1];
-    System.arraycopy(arregloEnteros, 0, NuevoArregloEnteros, 0, posicion);
-    System.arraycopy(arregloEnteros, posicion+1, NuevoArregloEnteros, posicion, longitud-posicion);
-    arregloEnteros=NuevoArregloEnteros;
+    if (posicion > 0 && posicion < longitud) {
+        int[] NuevoArregloEnteros = new int[longitud-1];
+        System.arraycopy(arregloEnteros, 0, NuevoArregloEnteros, 0, posicion-1);
+        System.arraycopy(arregloEnteros, posicion + 1, NuevoArregloEnteros, posicion, longitud - posicion - 1);
+        arregloEnteros=NuevoArregloEnteros;
+    }
     }
 
     /**
@@ -370,13 +372,18 @@ public class SandboxArreglos
      */
     public HashMap<Integer, Integer> calcularHistograma( )
     {
-    	Map<String, Integer> mapa = new HashMap<>();
-    	int longitud= arregloEnteros.length;
-    	for(int i=0;i<longitud;i++) {
-    		
-    		
+    	HashMap<Integer, Integer> histograma = new HashMap<>();
+    	int longitud= arregloEnteros.length;	
+        for (int valor : arregloEnteros) {        
+    	   if (histograma.containsKey(valor)) {
+    	                histograma.put(valor, histograma.get(valor) + 1);
+    	   } 
+    	   else {
+    	                histograma.put(valor, 1);
+    	            }
+    	 
     	}
-        return null;
+        return histograma;
     }
 
     /**
