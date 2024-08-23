@@ -246,7 +246,7 @@ public class SandboxArreglos
     for(int i=0;i<longitud;i++) {
     		NuevoArregloEnteros[i]= Math.abs(arregloEnteros[i]);
     	}
-    arregloEnteros=NuevosArregloEnteros;
+    arregloEnteros=NuevoArregloEnteros;
     }
     
 
@@ -427,6 +427,7 @@ public class SandboxArreglos
     
     	}
     }
+    return false;
     }
     /**
      * Compara el arreglo de enteros con otro arreglo de enteros y verifica que tengan los mismos elementos, aunque podría ser en otro orden.
@@ -467,7 +468,7 @@ public class SandboxArreglos
     {
     int[] NuevoArregloEnteros= new int[cantidad];
     for(int i=0;i <cantidad;i++) {
-    	NuevoArregloEnteros[i]=min + (int) (Math.random() * ((max - min) + 1));
+    	NuevoArregloEnteros[i]=minimo + (int) (Math.random() * ((maximo - minimo) + 1));
     }
     arregloEnteros=NuevoArregloEnteros;
     }
