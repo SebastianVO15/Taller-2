@@ -95,7 +95,7 @@ public class SandboxListas
      */
     public void agregarEntero( int entero )
     {
-
+    listaEnteros.add(entero);
     }
 
     /**
@@ -105,7 +105,7 @@ public class SandboxListas
      */
     public void agregarCadena( String cadena )
     {
-
+    	listaCadenas.add(cadena);
     }
 
     /**
@@ -114,6 +114,7 @@ public class SandboxListas
      */
     public void eliminarEntero( int valor )
     {
+   
     }
 
     /**
