@@ -41,8 +41,10 @@ public class SandboxListas
      * @return Una copia de la lista de enteros
      */
     public List<Integer> getCopiaEnteros( )
+    
     {
-        return null;
+    	List<Integer> copiaListaEnteros = new ArrayList<>(listaEnteros);
+        return copiaListaEnteros;
     }
 
     /**
@@ -51,7 +53,8 @@ public class SandboxListas
      */
     public List<String> getCopiaCadenas( )
     {
-        return null;
+    	List<String> copiaListaCadenas = new ArrayList<>(listaCadenas);
+        return copiaListaCadenas;
     }
 
     /**
@@ -60,7 +63,11 @@ public class SandboxListas
      */
     public int[] getEnterosComoArreglo( )
     {
-        return null;
+    	int[] arregloEnteros = new int[listaEnteros.size()];
+    	for (int i = 0; i < listaEnteros.size(); i++) {
+    	    arregloEnteros[i] = listaEnteros.get(i);
+    	}
+        return arregloEnteros;
     }
 
     /**
@@ -69,7 +76,7 @@ public class SandboxListas
      */
     public int getCantidadEnteros( )
     {
-        return -1;
+        return listaEnteros.size();
     }
 
     /**
@@ -78,7 +85,7 @@ public class SandboxListas
      */
     public int getCantidadCadenas( )
     {
-        return -1;
+        return listaCadenas.size();
     }
 
     /**
