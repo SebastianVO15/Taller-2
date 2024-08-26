@@ -1,7 +1,9 @@
 package uniandes.dpoo.estructuras.logica;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 /**
  * Esta clase tiene un conjunto de métodos para practicar operaciones sobre arreglos de enteros y de cadenas.
@@ -196,9 +198,9 @@ public class SandboxArreglos
     public void eliminarEnteroPorPosicion( int posicion )
     {
     int longitud= arregloEnteros.length;
-    if (posicion > 0 && posicion < longitud) {
+    if (posicion >= 0 && posicion < longitud) {
         int[] NuevoArregloEnteros = new int[longitud-1];
-        System.arraycopy(arregloEnteros, 0, NuevoArregloEnteros, 0, posicion-1);
+        System.arraycopy(arregloEnteros, 0, NuevoArregloEnteros, 0, posicion);
         System.arraycopy(arregloEnteros, posicion + 1, NuevoArregloEnteros, posicion, longitud - posicion - 1);
         arregloEnteros=NuevoArregloEnteros;
     }
@@ -311,29 +313,26 @@ public class SandboxArreglos
      */
     public int[] buscarEntero( int valor )
     {
-    	
-    	int longitud = arregloEnteros.length;
-        int VecesElemento = 0;
+    	if (arregloEnteros == null) {
+            return new int[0];
+        }
+
+        List<Integer> posicionesList = new ArrayList<>();
         
-        for (int i = 0; i < longitud; i++) {
+        for (int i = 0; i < arregloEnteros.length; i++) {
             if (arregloEnteros[i] == valor) {
-                VecesElemento++;
+                posicionesList.add(i);
             }
         }
-        
-        int[] posiciones = new int[VecesElemento];
-        int index = 0;
-        
-    
-        for (int i = 0; i < longitud; i++) {
-            if (arregloEnteros[i] == valor) {
-                posiciones[index] = i;
-                index++;
-            }
+
+        int[] posiciones = new int[posicionesList.size()];
+        for (int i = 0; i < posicionesList.size(); i++) {
+            posiciones[i] = posicionesList.get(i);
         }
-        
+
         return posiciones;
     }
+    
 
     /**
      * Calcula cuál es el rango de los enteros (el valor mínimo y el máximo).

@@ -70,7 +70,7 @@ public class SandboxMapas
             return null;
         }
     	else {
-    		List <String> llaves = (List<String>) mapaCadenas.keySet();
+    		List <String> llaves = new ArrayList<>(mapaCadenas.keySet());
     		String menor=Collections.min(llaves);
     		return menor;
     	}
@@ -88,7 +88,7 @@ public class SandboxMapas
             return null;
         }
     	else {
-    		List <String> llaves = (List<String>) mapaCadenas.keySet();
+    		List <String> llaves = new ArrayList<>(mapaCadenas.keySet());
     		String mayor=Collections.max(llaves);
     		return mayor;
     	}
@@ -180,7 +180,11 @@ public class SandboxMapas
      */
     public void reiniciarMapaCadenas( List<Object> objetos )
     {
-
+    	mapaCadenas.clear();
+    	for (Object objeto : objetos) {
+            String cadena = objeto.toString();
+            mapaCadenas.put(cadena, cadena);
+    	}
     }
 
     /**
@@ -188,7 +192,17 @@ public class SandboxMapas
      */
     public void volverMayusculas( )
     {
-
+    	if (mapaCadenas == null || mapaCadenas.isEmpty()) {
+            return; 
+        }
+    	List<String> llaves = new ArrayList<>(mapaCadenas.keySet());
+    	HashMap<String, String> NuevoMapa=new HashMap<String, String>( );
+    	for (Map.Entry<String, String> entry : mapaCadenas.entrySet()) {
+    	    String llaveMayuscula = entry.getKey().toUpperCase();
+    	    NuevoMapa.put(llaveMayuscula, entry.getValue());
+    	}
+    	
+    mapaCadenas=NuevoMapa;
     }
 
     /**
@@ -198,7 +212,19 @@ public class SandboxMapas
      */
     public boolean compararValores( String[] otroArreglo )
     {
-        return false;
+    	int verificador=0;
+    	for(String Valor:otroArreglo) {
+    		if(mapaCadenas.containsValue(Valor)) {
+    			verificador++;
+    		}
+    	}
+    	int longitud= otroArreglo.length;
+    	if (verificador==longitud) {
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
     }
 
 }

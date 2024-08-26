@@ -1,6 +1,7 @@
 package uniandes.dpoo.estructuras.logica;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -242,15 +243,14 @@ public class SandboxListas
      */
     public int contarApariciones( int valor )
     {
-     int longitud= listaEnteros.size();
-     int veceselemento=0;
-     for (int i =0;i<longitud;i++) {
-    	 if (listaEnteros.get(i)==valor) {
-    		 veceselemento++;
+    int longitud= listaEnteros.size();
+    int veceselemento=0;
+    for (int i =0;i<longitud;i++) {
+       if (listaEnteros.get(i)==valor) {
+   		 veceselemento++;
     	 }
-     }
-     
-        return veceselemento;
+    }
+     return veceselemento;
     }
 
     /**
@@ -279,16 +279,19 @@ public class SandboxListas
      */
     public int contarEnterosRepetidos( )
     {
-    	List<Integer> vistos =  new ArrayList<>();
-        List<Integer> repetidos =  new ArrayList<>();
+        HashMap<Integer, Integer> conteo = new HashMap<>();
         for (Integer numero : listaEnteros) {
-            if (vistos.contains(numero)) {
-                repetidos.add(numero);
-            } else {
-                vistos.add(numero);
+            conteo.put(numero, conteo.getOrDefault(numero, 0) + 1);
+        }
+        
+        int repetidos = 0;
+        for (Integer count : conteo.values()) {
+            if (count > 1) {
+                repetidos++;
             }
         }
-        return repetidos.size();
+        
+        return repetidos;
     }
 
     /**
