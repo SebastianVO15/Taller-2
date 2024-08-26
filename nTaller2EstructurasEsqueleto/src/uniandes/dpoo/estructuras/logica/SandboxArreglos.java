@@ -1,10 +1,10 @@
 package uniandes.dpoo.estructuras.logica;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+//import java.util.List;
+//import java.util.Map;
 /**
  * Esta clase tiene un conjunto de métodos para practicar operaciones sobre arreglos de enteros y de cadenas.
  *
@@ -313,25 +313,30 @@ public class SandboxArreglos
      */
     public int[] buscarEntero( int valor )
     {
-    	if (arregloEnteros == null) {
-            return new int[0];
-        }
-
-        List<Integer> posicionesList = new ArrayList<>();
-        
-        for (int i = 0; i < arregloEnteros.length; i++) {
-            if (arregloEnteros[i] == valor) {
-                posicionesList.add(i);
-            }
-        }
-
-        int[] posiciones = new int[posicionesList.size()];
-        for (int i = 0; i < posicionesList.size(); i++) {
-            posiciones[i] = posicionesList.get(i);
-        }
-
-        return posiciones;
-    }
+	    	if (arregloEnteros == null) {
+	            return new int[0];
+	        }
+	    	int Tamaño = 0;
+	        for (int i = 0; i < arregloEnteros.length; i++) {
+	            if (arregloEnteros[i] == valor) {
+	                Tamaño++;
+	            }
+	        }
+	        if(Tamaño==0) {
+	            return new int[0];
+	        }
+	        else {
+	       int[] ArregloFinal= new int[Tamaño];
+	        int j=0;
+	        for (int i = 0; i < arregloEnteros.length; i++) {
+	            if (arregloEnteros[i] == valor) {
+	                ArregloFinal[j]=i;
+	                j++;
+	            }
+	        }
+	        return ArregloFinal;
+	        }	
+	    }
     
 
     /**

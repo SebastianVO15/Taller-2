@@ -3,8 +3,10 @@ package uniandes.dpoo.estructuras.logica;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Collections;
 /**
  * Esta clase tiene un conjunto de métodos para practicar operaciones sobre mapas.
@@ -116,23 +118,22 @@ public class SandboxMapas
      */
     public int getCantidadCadenasDiferentes( )
     {
-    	int Valoresdif=0;
-    	List<String> elementos = new ArrayList<>(mapaCadenas.values());
-    	List<String> vistos = new ArrayList<>();
-    	List <String> repetido = new ArrayList<String>();
-    	for (String elemento:elementos) {
-    		if (vistos.contains(elemento)) {
-                if (!repetido.contains(elemento)) {
-                    Valoresdif++;
-                    repetido.add(elemento);
+    	List<String> llaves = new ArrayList<>(mapaCadenas.keySet());
+        List<String> vistos = new ArrayList<>();
+        List<String> repetidos = new ArrayList<>();
+
+        for (String llave : llaves) {
+            if (vistos.contains(llave)) {
+                if (!repetidos.contains(llave)) {
+                    repetidos.add(llave);
                 }
-    		else {
-    			vistos.add(elemento);
-    		}
-    		
-    	}
-    	}
-        return Valoresdif;
+            } else {
+               vistos.add(llave);
+            }
+        }
+
+        return repetidos.size();
+  
     }
 
     /**
@@ -144,7 +145,7 @@ public class SandboxMapas
      */
     public void agregarCadena( String cadena )
     {
-
+    
     }
 
     /**
@@ -188,18 +189,19 @@ public class SandboxMapas
     }
 
     /**
-     * Modifica el mapa de cadenas reemplazando las llaves para que ahora todas estén en mayúsculas pero sigan conservando las mismas cadenas asociadas.
-     */
+	     * Modifica el mapa de cadenas reemplazando las llaves para que ahora todas estén en mayúsculas pero sigan conservando las mismas cadenas asociadas.
+	     */
     public void volverMayusculas( )
     {
     	if (mapaCadenas == null || mapaCadenas.isEmpty()) {
             return; 
         }
-    	List<String> llaves = new ArrayList<>(mapaCadenas.keySet());
     	HashMap<String, String> NuevoMapa=new HashMap<String, String>( );
-    	for (Map.Entry<String, String> entry : mapaCadenas.entrySet()) {
-    	    String llaveMayuscula = entry.getKey().toUpperCase();
-    	    NuevoMapa.put(llaveMayuscula, entry.getValue());
+    	 for (Map.Entry<String, String> entry : mapaCadenas.entrySet()) {
+    		String valor= entry.getValue();
+    		String llave= entry.getKey();
+    		String Nuevallave=llave.toUpperCase();
+    		NuevoMapa.put(Nuevallave, valor);
     	}
     	
     mapaCadenas=NuevoMapa;
@@ -212,19 +214,13 @@ public class SandboxMapas
      */
     public boolean compararValores( String[] otroArreglo )
     {
-    	int verificador=0;
     	for(String Valor:otroArreglo) {
-    		if(mapaCadenas.containsValue(Valor)) {
-    			verificador++;
-    		}
-    	}
-    	int longitud= otroArreglo.length;
-    	if (verificador==longitud) {
-    		return true;
-    	}
-    	else {
-    		return false;
+    		 if (!mapaCadenas.containsValue(Valor)) {
+                 return false;
+             }
+         }
+         return true;
     	}
     }
 
-}
+

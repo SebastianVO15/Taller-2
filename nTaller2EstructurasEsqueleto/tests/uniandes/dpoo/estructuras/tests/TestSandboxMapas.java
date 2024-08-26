@@ -50,7 +50,7 @@ class TestSandboxMapas
     @Test
     void testGetCantidadCadenas( )
     {
-        assertEquals( cadenasOrdenadas.length, sencillo.getCantidadCadenasDiferentes( ), "La cantidad de cadenas no es correcta" );
+	        assertEquals( cadenasOrdenadas.length, sencillo.getCantidadCadenasDiferentes( ), "La cantidad de cadenas no es correcta" );
         assertEquals( 0, vacio.getCantidadCadenasDiferentes( ), "La cantidad inicial de cadenas en el sandbox vacío no es correcta" );
     }
 

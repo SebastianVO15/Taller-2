@@ -1,7 +1,7 @@
 package uniandes.dpoo.estructuras.logica;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+//import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -278,20 +278,23 @@ public class SandboxListas
      * @return La cantidad de enteos diferentes que aparecen más de una vez
      */
     public int contarEnterosRepetidos( )
-    {
-        HashMap<Integer, Integer> conteo = new HashMap<>();
-        for (Integer numero : listaEnteros) {
-            conteo.put(numero, conteo.getOrDefault(numero, 0) + 1);
-        }
-        
-        int repetidos = 0;
-        for (Integer count : conteo.values()) {
-            if (count > 1) {
-                repetidos++;
+    {    	
+    	int longitud= listaEnteros.size();
+    	List<Integer> vistos = new ArrayList<>();
+    	List<Integer> repetidos = new ArrayList<>();
+    	
+    	for (Integer numero : listaEnteros) {
+            if (vistos.contains(numero)) {
+                
+                if (!repetidos.contains(numero)) {
+                    repetidos.add(numero);
+                }
+            } else {
+             
+                vistos.add(numero);
             }
-        }
-        
-        return repetidos;
+    	}
+        return repetidos.size();
     }
 
     /**
