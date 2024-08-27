@@ -153,14 +153,12 @@ public class SandboxListas
     public void eliminarEnteroPorPosicion( int posicion )
     {	
     int longitud= listaEnteros.size();
-   	 if (posicion <0 ) {
-   		posicion=0;
-	    } 
-   	if (posicion > longitud ) {
-   		posicion=longitud-1; 
-	    } 
+   	 if (posicion <0 || posicion >= longitud ) {
+   		String a="";
+	    }
+   	 else {
 	listaEnteros.remove(posicion);
-	    
+   	 }
 	  
     }
 
@@ -265,7 +263,7 @@ public class SandboxListas
     	int longitud= listaCadenas.size();
         int veceselemento=0;
         for (int i =0;i<longitud;i++) {
-       	 if (listaCadenas.get(i)==cadena) {
+       	 if (listaCadenas.get(i).toLowerCase().equals(cadena.toLowerCase())) {
        		 veceselemento++;
        	 }
         }
