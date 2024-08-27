@@ -120,10 +120,12 @@ public class SandboxMapas
      */
     public int getCantidadCadenasDiferentes( )
     {
+  
         List<String> vistos = new ArrayList<>();
         int contador=0;
         for (String Valor : mapaCadenas.values()) {
-            if (vistos.contains(Valor)) {
+            if (!vistos.contains(Valor)) {
+            	 vistos.add(Valor);
             	contador++;
             }
         }
@@ -141,7 +143,14 @@ public class SandboxMapas
      */
     public void agregarCadena( String cadena )
     {
-    
+    	char[] caracteres = cadena.toCharArray();
+        int longitud = caracteres.length;
+        char[] invertido = new char[longitud];
+        for (int i = 0; i < longitud; i++) {
+            invertido[i] = caracteres[longitud - 1 - i];
+        }
+    	
+    	mapaCadenas.put(new String(invertido), cadena);	
     }
 
     /**
