@@ -73,7 +73,8 @@ public class SandboxMapas
         }
     	else {
     		List <String> llaves = new ArrayList<>(mapaCadenas.keySet());
-    		String menor=Collections.min(llaves);
+    		Collections.sort(llaves);
+    		String menor=llaves.get(0);
     		return menor;
     	}
     }
@@ -90,8 +91,9 @@ public class SandboxMapas
             return null;
         }
     	else {
-    		List <String> llaves = new ArrayList<>(mapaCadenas.keySet());
-    		String mayor=Collections.max(llaves);
+    		
+    		List <String> valores = new ArrayList<>(mapaCadenas.values());
+    		String mayor=Collections.max(valores);
     		return mayor;
     	}
     }
@@ -118,21 +120,15 @@ public class SandboxMapas
      */
     public int getCantidadCadenasDiferentes( )
     {
-    	List<String> llaves = new ArrayList<>(mapaCadenas.keySet());
         List<String> vistos = new ArrayList<>();
-        List<String> repetidos = new ArrayList<>();
-
-        for (String llave : llaves) {
-            if (vistos.contains(llave)) {
-                if (!repetidos.contains(llave)) {
-                    repetidos.add(llave);
-                }
-            } else {
-               vistos.add(llave);
+        int contador=0;
+        for (String Valor : mapaCadenas.values()) {
+            if (vistos.contains(Valor)) {
+            	contador++;
             }
         }
 
-        return repetidos.size();
+        return contador;
   
     }
 
